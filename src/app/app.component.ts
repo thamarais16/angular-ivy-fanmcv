@@ -1,6 +1,7 @@
 import { Component, VERSION, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
+import { FormsModule, FormGroup, FormBuilder, Validators, FormControl } from "@angular/forms";
 import { Observable } from 'rxjs';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'my-app',
@@ -10,7 +11,7 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   form: FormGroup;
-
+  sample: string = "mafia";
   constructor(
     private fb: FormBuilder
   ){
@@ -30,31 +31,30 @@ export class AppComponent implements OnInit {
 
   formInit(){
     this.form = this.fb.group({
-      name: new FormControl('', Validators.required, [this.nLength]),
-      password: new FormControl('', Validators.required, [this.pLength.bind(this)]),
+      name: new FormControl(null, Validators.required, [this.nLength]),
+      password: new FormControl(null, [Validators.required, this.pLength]),
     })
 
-    this.form.patchValue({name:"Thamarai", password:"12345"});
+    //this.form.patchValue({name:"Thamarai", password:"12345"});
   }
 
-  async nLength(control: FormControl): Promise<any>{
+  async nLength(control: AbstractControl): Promise<any>{
     return await new Promise(res =>{
       setTimeout(()=>{
         if(control.value == "thams"){
           res({restrict: true});
         }else{
-          res(null);
+          res(null); 
         }
       },5000);
     });
   }
 
   pLength(control: FormControl){
-    if(control.value.length < 3){
-      return { restrict: true };
-    }else{
-      return { restrict: false };
+    if (control.value == 13445) {
+      return {errorCpf: true}
     }
+    return null;
   }
 
 } 
