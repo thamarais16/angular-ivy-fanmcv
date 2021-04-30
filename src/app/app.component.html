@@ -9,7 +9,7 @@
       <div class="form-group">
         <label for="exampleInputEmail1">Email address</label>
         <input type="text" formControlName="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required #email>
-        <small class="form-text" style="color: red" *ngIf="form.get('name').hasError('required')">UserName Required</small>
+        <small class="form-text" style="color: red" *ngIf="form.get('name').hasError('required') && form.get('name').touched">UserName Required</small>
         <small class="form-text" style="color: red" *ngIf="form.get('name').hasError('restrict')">UserName Exists</small>
        
       </div>
