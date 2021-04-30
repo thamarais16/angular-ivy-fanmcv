@@ -38,10 +38,8 @@
         <label for="exampleInputEmail1">Email address</label>
         <input type="text" [(ngModel)]="sample" #sam="ngModel" name="sample"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
         <small  class="text form-text" class="alert alert-danger" [hidden]="sam.valid || sam.pristine">error</small>
-        
+
       </div>
-      
-      
       
       <button type="reset" class="btn btn-primary m-2" (click)="reactiveForm.resetForm(); reactiveForm.reset(); ">Reset</button>
     </form>
