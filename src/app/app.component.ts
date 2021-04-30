@@ -11,7 +11,7 @@ import { AbstractControl } from '@angular/forms';
 export class AppComponent implements OnInit {
   name = 'Angular ' + VERSION.major;
   form: FormGroup;
-  sample: string = "mafia";
+  sample: string = "";
   constructor(
     private fb: FormBuilder
   ){

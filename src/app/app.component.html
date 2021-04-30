@@ -25,14 +25,28 @@
     </form>
   </div>
 </div>
-<form >
-  <input type="text" [(ngModel)]="sample" #sam="ngModel" name="sample" required/>
-    <p>valid is {{sam.valid}}</p>
-   <p>pristine is {{sam.pristine}}</p>
-   <p>touched is {{sam.touched}}</p>
-   <p>dirty is {{sam.dirty}}</p>
-   <p>value is {{sam.value}}</p>
-</form>
+
+<div class="card">
+  <div class="card-header">
+    <h3>Template Forms</h3>
+  </div>
+
+  <div class="card-body col-12">
+    <form #reactiveForm="ngForm" >
+
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="text" [(ngModel)]="sample" #sam="ngModel" name="sample"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+        <small  class="text form-text" class="alert alert-danger" [hidden]="sam.valid || sam.pristine">error</small>
+        
+      </div>
+      
+      
+      
+      <button type="reset" class="btn btn-primary m-2" (click)="reactiveForm.resetForm(); reactiveForm.reset(); ">Reset</button>
+    </form>
+  </div>
+</div>
 
 
 
